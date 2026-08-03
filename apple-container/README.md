@@ -1,9 +1,9 @@
-## Requirements
+# Requirements
 * Mac with Apple Silicon on macOS 26
 * [`apple/container`](https://github.com/apple/container.git)
 * [fabric-ai installed and set up](https://github.com/danielmiessler/Fabric/blob/main/README.md#installation)
 
-## Installation
+# Installation
 
 ```sh
 # Pull the pre-built image
