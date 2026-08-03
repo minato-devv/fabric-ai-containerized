@@ -1,3 +1,8 @@
+# Requirements
+
+* `docker`
+* `docker-compose`
+
 # Installation 
 
 ```sh
@@ -15,7 +20,7 @@ docker run -it --rm -v "$HOME/.config/fabric:/home/appuser/.config/fabric" kayva
 docker compose up -d
 ```
 
-Configure your `mcp.json`:
+## Configure your `mcp.json`:
 
 ```json
 {
