@@ -1,0 +1,38 @@
+name: fabric-mcp-docker
+services:
+    fabric:
+        container_name: fabric
+        restart: on-failure:5
+        cpus: '0.1'
+        mem_limit: 128m
+        read_only: true
+        volumes:
+          - ${HOME}/.config/fabric:/home/appuser/.config/fabric:ro
+        image: kayvan/fabric:latest
+        command: --serve --address 0.0.0.0:8080
+        healthcheck:
+            test: wget -O - http://localhost:8080/strategies || exit 1
+        cap_drop:
+            - ALL
+        security_opt:
+            - no-new-privileges
+    fabric-mcp:
+        container_name: fabric-mcp
+        restart: on-failure:5
+        cpus: '0.2'
+        mem_limit: 256m
+        read_only: true
+        ports:
+            - 127.0.0.1:8000:8000
+        volumes:
+            - ${HOME}/.config/fabric:/home/appuser/.config/fabric:ro
+        environment:
+            - FABRIC_BASE_URL=http://fabric:8080
+        image: honeylavender7435/fabric-mcp:v1
+        depends_on:
+            - fabric
+        command: --transport http --host 0.0.0.0 --port 8000
+        cap_drop:
+            - ALL
+        security_opt:
+            - no-new-privileges
