@@ -1,17 +1,17 @@
 # Installation 
 
 ```sh
-# clone this repository
-git clone https://github.com/minato-devv/fabric-mcp-docker.git
-cd fabric-mcp-docker
+# Clone this repository
+git clone https://github.com/minato-devv/fabric-ai-containerized.git
+cd fabric-ai-containerized/docker
 
-# create the directory that will be mounted onto both containers
-mkdir -p "${HOME}/.config/fabric"
+# Create the directory that will be mounted onto both containers
+mkdir -p "$HOME/.config/fabric"
 
-# install the patterns and strategies, choose a vendor and model
-docker run -it --rm -v "${HOME}/.config/fabric:/home/appuser/.config/fabric" kayvan/fabric:latest --setup
+# Install the patterns and strategies, choose a vendor and model
+docker run -it --rm -v "$HOME/.config/fabric:/home/appuser/.config/fabric" kayvan/fabric:latest --setup
 
-# start both services
+# Start both services
 docker compose up -d
 ```
 
